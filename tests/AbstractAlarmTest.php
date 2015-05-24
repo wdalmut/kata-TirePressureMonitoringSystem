@@ -1,11 +1,11 @@
 <?php
 namespace TDDMicroExercises\PHP\TirePressureMonitoringSystem;
 
-class Test extends \PHPUnit_Framework_TestCase
+class AbstractAlarmTest extends \PHPUnit_Framework_TestCase
 {
     public function testInitalStatus()
     {
-        $alarm = new AlarmModel();
+        $alarm = $this->getMockForAbstractClass("TDDMicroExercises\PHP\TirePressureMonitoringSystem\AbstractAlarm");
 
         $this->assertFalse($alarm->isAlarm());
         $this->assertSame(0, $alarm->getAlarmCount());
@@ -13,7 +13,7 @@ class Test extends \PHPUnit_Framework_TestCase
 
     public function testSetAlarm()
     {
-        $alarm = new AlarmModel();
+        $alarm = $this->getMockForAbstractClass("TDDMicroExercises\PHP\TirePressureMonitoringSystem\AbstractAlarm");
         $alarm->setAlarm();
 
         $this->assertTrue($alarm->isAlarm());
@@ -22,7 +22,8 @@ class Test extends \PHPUnit_Framework_TestCase
 
     public function testIncAlarmCount()
     {
-        $alarm = new AlarmModel();
+        $alarm = $this->getMockForAbstractClass("TDDMicroExercises\PHP\TirePressureMonitoringSystem\AbstractAlarm");
+
         $alarm->setAlarm();
         $alarm->setAlarm();
         $alarm->setAlarm();

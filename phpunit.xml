@@ -15,7 +15,7 @@
             <directory>../tests</directory>
         </blacklist>
         <whitelist>
-            <directory>../src</directory>
+            <directory>src</directory>
         </whitelist>
     </filter>
 </phpunit>

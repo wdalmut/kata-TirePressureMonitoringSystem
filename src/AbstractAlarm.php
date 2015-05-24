@@ -1,7 +1,7 @@
 <?php
 namespace TDDMicroExercises\PHP\TirePressureMonitoringSystem;
 
-class AlarmModel
+abstract class AbstractAlarm
 {
     private $alarmOn;
     private $alarmCount;

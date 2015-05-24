@@ -1,28 +1,22 @@
 <?php
 namespace TDDMicroExercises\PHP\TirePressureMonitoringSystem;
 
-class Alarm
+class Alarm extends AbstractAlarm
 {
     const LOW_PRESSURE_TRESHOLD     = 17;
     const HIGH_PRESSURE_TRESHOLD    = 21;
 
     private $sensor;
-    private $alarm;
 
-    public function __construct(Sensor $sensor = null, AlarmModel $alarm = null) {
+    public function __construct(Sensor $sensor = null) {
+        parent::__construct();
         $this->sensor = ($sensor) ? $sensor : new Sensor();
-        $this->alarm = ($alarm) ? $alarm : new AlarmModel();
     }
 
     public function isAlarm()
     {
         $this->check();
-        return $this->alarm->isAlarm();
-    }
-
-    public function getAlarmCount()
-    {
-        return $this->alarm->getAlarmCount();
+        return parent::isAlarm();
     }
 
     private function isAlarmWith($psiPressureValue)
@@ -45,7 +39,7 @@ class Alarm
         $psiPressureValue = $this->sensor->popNextPressurePsiValue();
 
         if ($this->isAlarmWith($psiPressureValue)) {
-            $this->alarm->setAlarm();
+            $this->setAlarm();
         }
 
         return $this;
